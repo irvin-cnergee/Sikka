@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_scrn_myapp"
+    tools:context="com.cnergee.fragments.Refer_FrndFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <include layout="@layout/topbanner"
+        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/top_Layout"/>
+
+
+    <ScrollView
+        android:id="@+id/scrolldata"
+        android:layout_below="@+id/top_Layout"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout android:id="@+id/mainview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            >
+            <RelativeLayout android:id="@+id/myheader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+
+
+                <TextView
+                    android:id="@+id/titleheader"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="Refer a friend"
+
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="2dp"
+
+
+
+                    />
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000"
+                    android:layout_below="@+id/titleheader"
+                    ></View>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/relativeLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/myheader"
+
+                android:paddingBottom="20dp" >
+
+
+                <!-- <include
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/ll_include"
+                    android:layout_height="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:paddingTop="5dp"
+                    android:background="@color/bg_myapp_common"
+                    layout="@layout/fragment_newconn"
+
+                 /> -->
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

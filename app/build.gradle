@@ -1,0 +1,185 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 30
+    defaultConfig {
+        applicationId "cnergee.sikka.broadband"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 26
+        versionName '3.1'//'2.1'
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+
+
+//    configurations {
+//        compile.exclude group: 'androidx.annotation', module: 'annotation'
+//    }
+
+
+
+    packagingOptions {
+        exclude 'com.nineoldandroids.animation.Animator$AnimatorListener'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
+    implementation 'androidx.navigation:navigation-ui:2.3.5'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation files('libs/ksoap2-android-assembly-3.0.0-RC.4-jar-with-dependencies.jar')
+    implementation files('libs/traction-ashok-v1.jar')
+    implementation files('libs/picasso-2.2.0.jar')
+    implementation files('libs/otto-1.3.5.jar')
+    implementation files('libs/commons-net-3.3.jar')
+    implementation files('libs/org.apache.http.legacy.jar')
+    implementation files('libs/ftp4j-1.7.2.jar')
+    implementation files('libs/nineoldandroids-2.4.0.jar'
+          )
+
+
+    //noinspection GradleCompatible
+    //  implementation 'com.android.support:support-v4:27.0.2'
+    implementation 'it.sephiroth.android.library.imagezoom:imagezoom:+'
+    implementation 'com.google.android.gms:play-services-gcm:10.2.1'
+    implementation 'com.google.firebase:firebase-messaging:10.2.1'
+    //noinspection GradleCompatible
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.0'
+
+    implementation files('libs/PGSDK_V2.0.jar')
+
+
+    implementation project(':residemenu')
+////            {
+////                exclude 'com.nineoldandroids.animation.Animator$AnimatorListener', module: 'library'
+////            }
+//            {
+//                exclude group: 'com.nineoldandroids', module: 'library'
+//            })
+
+//
+    implementation project(':wheeldemo')
+    implementation project(':floating_lib')
+
+    implementation 'com.android.volley:volley:1.1.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation files('libs/sabpaisasdk_Ver2.aar')
+
+    subprojects {
+        project.configurations.all {
+            resolutionStrategy.eachDependency { details ->
+                if (details.requested.group == 'com.android.support'
+                        && !details.requested.name.contains('multidex') ) {
+                    details.useVersion "24.0.0"
+                }
+            }
+        }
+    }
+
+
+}
+
+//        multiDexEnabled true
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//    }
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        }
+//    }
+//
+//    lintOptions {
+//        checkReleaseBuilds false
+//        // Or, if you prefer, you can continue to check for errors in release builds,
+//        // but continue the build even when errors are found:
+//        abortOnError false
+//    }
+//
+//
+//
+//}
+//configurations {
+//    compile.exclude group: 'com.nineoldandroids.animation.Animator$AnimatorListener'
+//
+//}
+//dependencies {
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation 'androidx.appcompat:appcompat:1.1.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+//
+//    implementation files('libs/ksoap2-android-assembly-3.0.0-RC.4-jar-with-dependencies.jar')
+//    implementation files('libs/traction-ashok-v1.jar')
+//
+//    implementation files('libs/picasso-2.2.0.jar')
+//    implementation files('libs/otto-1.3.5.jar')
+//    implementation files('libs/commons-net-3.3.jar')
+//    implementation files('libs/org.apache.http.legacy.jar')
+//    implementation files('libs/ftp4j-1.7.2.jar')
+//    implementation files('libs/nineoldandroids-2.4.0.jar'
+//    )
+//
+//    //noinspection GradleCompatible
+//    implementation 'androidx.appcompat:appcompat:1.0.0'
+//  //  implementation 'com.android.support:support-v4:27.0.2'
+//    implementation 'it.sephiroth.android.library.imagezoom:imagezoom:+'
+//    implementation 'com.google.android.gms:play-services-gcm:10.2.1'
+//    implementation 'com.google.firebase:firebase-messaging:10.2.1'
+//    //noinspection GradleCompatible
+//    implementation 'androidx.cardview:cardview:1.0.0'
+//    implementation 'androidx.multidex:multidex:2.0.0'
+//
+//    implementation files('libs/PGSDK_V2.0.jar')
+//
+//
+//    implementation project(':residemenu')
+//    implementation project(':wheeldemo')
+//    implementation project(':floating_lib')
+//
+//    implementation 'com.android.volley:volley:1.1.1'
+//    implementation 'com.google.code.gson:gson:2.8.5'
+//    implementation files('libs/sabpaisasdk_Ver2.aar')
+//
+//    subprojects {
+//        project.configurations.all {
+//            resolutionStrategy.eachDependency { details ->
+//                if (details.requested.group == 'com.android.support'
+//                        && !details.requested.name.contains('multidex') ) {
+//                    details.useVersion "30.0.0"
+//                }
+//            }
+//        }
+//    }
+//
+//
+//}

@@ -1,0 +1,69 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
+    tools:context="com.cnergee.fragments.UpdateProfileFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_scrn_myapp">
+
+        <include layout="@layout/topbanner"
+            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/top_Layout"/>
+
+
+        <LinearLayout
+        android:id="@+id/ll_marquee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/top_Layout">
+
+        <com.cnergee.widgets.MyTextView
+            android:id="@+id/tv_marquee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:text=""
+            android:textSize="20dp"
+            android:textColor="@color/self_orange"
+            customfontdemo:fontName="Neuton_Regular.ttf"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/header_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/ll_marquee"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        >
+
+        <TextView
+            android:id="@+id/txt_head"
+            android:text="UPDATE PROFILE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/txt_head"
+            android:background="@color/label_black_color"></View>
+
+
+
+    </RelativeLayout>
+    </RelativeLayout>
+
+</FrameLayout>

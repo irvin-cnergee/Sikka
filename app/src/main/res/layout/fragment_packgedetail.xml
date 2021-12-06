@@ -1,0 +1,206 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
+    tools:context="com.cnergee.fragments.PackgedetailFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_scrn_myapp"
+        android:clickable="true"
+        android:orientation="vertical" >
+
+    <include layout="@layout/topbanner"
+        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/top_Layout"/>
+
+    <LinearLayout
+        android:id="@+id/ll_marquee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/top_Layout">
+
+        <com.cnergee.widgets.MyTextView
+            android:id="@+id/tv_marquee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:text=""
+            android:textSize="20dp"
+            android:textColor="@color/blue_background"
+            customfontdemo:fontName="Neuton_Regular.ttf"/>
+
+    </LinearLayout>
+
+
+    <!--  <ScrollView
+          android:id="@+id/scrolldata"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+
+          >-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_marquee"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:id="@+id/myheader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp" >
+
+            <TextView
+                android:id="@+id/titleheader"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="SELECT PLANS"
+                android:textColor="@color/blue_background"
+                android:textStyle="bold"/>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_below="@+id/titleheader"
+                android:background="#000000" />
+        </RelativeLayout>
+
+
+        <ExpandableListView
+            android:id="@+id/exlv_PackageList"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:indicatorEnd="?android:attr/expandableListPreferredChildIndicatorRight"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="0.5dp" />
+
+        <!-- <android.support.v7.widget.RecyclerView
+             android:id="@+id/horizontal_recycler_view"
+             android:layout_width="match_parent"
+             android:layout_height="70dp"/>-->
+
+        <!--    <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/editextlayout"
+                android:orientation="horizontal"
+                android:paddingRight="2dp"
+                android:layout_gravity="center"
+                android:paddingTop="2dp" >
+
+                <Spinner
+                    android:id="@+id/planList"
+                    style="@style/SpinnerAppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"/>
+            </LinearLayout>-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/spinner_border"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Spinner
+                android:id="@+id/planList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:spinnerMode="dropdown" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:src="@drawable/dropdown" />
+
+        </RelativeLayout>
+
+        <!--<HorizontalScrollView-->
+        <!--android:id="@+id/horizontalScrollView1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:fillViewport="true"-->
+        <!--android:scrollbars="horizontal" >-->
+
+        <!--<GridView-->
+        <!--android:id="@+id/gridview1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:columnWidth="90dp"-->
+        <!--android:verticalSpacing="5dp"-->
+        <!--android:horizontalSpacing="5dp"-->
+        <!--android:gravity="center"-->
+        <!--android:layout_marginTop="5dp"/>-->
+        <!--</HorizontalScrollView>-->
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:id="@+id/title_horizontalScrollView"
+            android:layout_margin="1dp"
+            android:fillViewport="false"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <GridView
+                    android:id="@+id/gridview1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnWidth="90dp"
+                    android:numColumns="1"
+                    android:verticalSpacing="5dp"
+                    android:horizontalSpacing="5dp"
+                    android:stretchMode="columnWidth"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+        <GridView
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnWidth="90dp"
+            android:numColumns="1"
+            android:verticalSpacing="5dp"
+            android:horizontalSpacing="5dp"
+            android:stretchMode="columnWidth"
+            android:gravity="center"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/drawable/apptheme_activated_background_holo_light.xml" value="0.2361111111111111" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/drawable/btn_style.xml" value="0.2361111111111111" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/drawable/edittext_style.xml" value="0.2361111111111111" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/drawable/tabstrip_theme_tab_indicator_holo.xml" value="0.2361111111111111" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/activity_help.xml" value="0.12689969604863222" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/activity_id_card.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/activity_make_payment_subpaisa.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/activity_notification_list.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/activity_packgedetail.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/activity_payment_list.xml" value="0.12689969604863222" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/activity_refer_frnd.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/activity_sms.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/app_bar_main.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/atom_webview.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/authentication.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/changepackage.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/confirmation.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/content_main.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/dialog_payment_gateway.xml" value="0.223731884057971" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_change_package.xml" value="0.25" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_complaints.xml" value="0.24456521739130435" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_data_usage.xml" value="0.223731884057971" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_existing.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_help.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_help_detail.xml" value="0.2463768115942029" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_home.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_image.xml" value="0.223731884057971" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_launch_complaint.xml" value="0.223731884057971" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_make_my_payment__atom.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_make_my_payment_atom.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_myapp_data_usage.xml" value="0.24909420289855072" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_newconn.xml" value="0.25" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_newconn_new.xml" value="0.223731884057971" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_notification_list.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_packgedetail.xml" value="0.223731884057971" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_payment_history.xml" value="0.2536231884057971" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_profile.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_question.xml" value="0.223731884057971" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_refer__frnd.xml" value="0.2536231884057971" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_renew_package.xml" value="0.2" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_resolve_yourself.xml" value="0.223731884057971" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_trans_response_atom.xml" value="0.2604166666666667" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/fragment_update_profile.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/grid_days.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/help.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/help_item.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/history_data_fragment.xml" value="0.223731884057971" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/horizontal_item_view.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/list_packagedetail.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/list_packagegroup.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/login_fragment_activity.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/makemypayments.xml" value="0.25" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/myapp_profile.xml" value="0.16" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/nav_header_main.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/new_myapp_datausage.xml" value="0.2536231884057971" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/new_service_request.xml" value="0.2536231884057971" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/newchangepackage.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/notification_list_view.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/notification_listview_item_row.xml" value="0.18" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/paymentlistview_row.xml" value="0.12689969604863222" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/renewpackage.xml" value="0.25815217391304346" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/test_myapp_home.xml" value="0.25" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/topbanner.xml" value="0.223731884057971" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/transresponse.xml" value="0.12689969604863222" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/update_profile.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/menu/activity_main_drawer.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/menu/my_navigation_bottombar.xml" value="0.2609375" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/residemenu/src/main/res/layout/residemenu_item.xml" value="0.2609375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

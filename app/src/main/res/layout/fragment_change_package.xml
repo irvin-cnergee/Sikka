@@ -1,0 +1,368 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fram"
+    xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
+    tools:context="com.cnergee.fragments.ChangePackageFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_scrn_myapp"
+        android:orientation="vertical" >
+
+
+        <include
+            android:id="@+id/top_Layout"
+            layout="@layout/topbanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" />
+
+
+
+        <LinearLayout
+            android:id="@+id/ll_marquee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/top_Layout">
+
+            <com.cnergee.widgets.MyTextView
+                android:id="@+id/tv_marquee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:text=""
+                android:textSize="20dp"
+                android:textColor="@color/self_orange"
+                customfontdemo:fontName="Neuton_Regular.ttf"/>
+
+        </LinearLayout>
+
+
+        <ScrollView
+            android:id="@+id/scrolldata"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ll_marquee"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp" >
+
+            <RelativeLayout
+                android:id="@+id/contentdata"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center" >
+
+                <RelativeLayout
+                    android:id="@+id/myheader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp" >
+
+                    <TextView
+                        android:id="@+id/titleheader"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="EXPLORE PLANS"
+                        android:textColor="@color/blue_background"
+                        android:textStyle="bold"/>
+
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/titleheader"
+                        android:background="#000000" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/myheader" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical"
+                            android:paddingRight="2dp"
+                            android:background="@drawable/editextlayout"
+                            android:layout_marginTop="10dp" >
+
+                            <!-- <Spinner
+                                android:id="@+id/planList"
+                                style="@style/SpinnerAppTheme"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="3dp" />
+                                 -->
+                            <!--<Button-->
+                            <!--android:id="@+id/btn_planlist"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:gravity="center"-->
+                            <!--android:padding="10dp"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:background="@color/bg_myapp_common"-->
+                            <!--android:textSize="15dp"/>-->
+                            <TextView
+                                android:id="@+id/tv_pkg_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:gravity="center"
+                                android:textSize="18dp"
+                                android:padding="8dp"
+                                android:textColor="@color/label_paymenthistory" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:background="@color/black_color"
+                                android:layout_height="1dp"/>
+
+                            <TextView
+                                android:id="@+id/tv_offer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:gravity="center_horizontal"
+                                android:layout_gravity="top"
+                                android:textSize="15dp"
+                                android:padding="5dp"
+
+                                android:textColor="@color/label_datausage"
+                                android:visibility="visible"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_package_rate"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:background="@color/bg_myapp_common"
+                            android:orientation="horizontal"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                            android:weightSum="2" >
+
+                            <TextView
+                                android:id="@+id/TextView04"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="3dp"
+                                android:layout_weight="1"
+                                android:text="@string/package_rate"
+                                android:textColor="@color/blue_background" />
+
+                            <TextView
+                                android:id="@+id/package_rate"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="3dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:paddingLeft="3dp"
+                                android:text="@string/app_default_label"
+                                android:textColor="@color/blue_background"
+                                />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/editextlayout"
+                            android:orientation="horizontal"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                            android:weightSum="2" >
+
+                            <TextView
+                                android:id="@+id/TextView03"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="3dp"
+                                android:layout_weight="1"
+                                android:text="@string/final_price"
+                                android:textColor="@color/blue_background" />
+
+                            <TextView
+                                android:id="@+id/price"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="3dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:paddingLeft="3dp"
+                                android:text="@string/app_default_label"
+                                android:textColor="@color/blue_background"/>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/validity"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:layout_weight="0.11"
+                            android:paddingLeft="10dp"
+                            android:text="@string/app_default_label"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="#0000FF"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/servicetax"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:layout_weight="0.11"
+                            android:paddingLeft="10dp"
+                            android:text="@string/app_default_label"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="#0000FF"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/TextView02"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="3dp"
+                            android:background="@color/bg_myapp_common"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                            android:text="@string/package_updatefrom"
+                            android:textColor="@color/blue_background" />
+
+                        <RadioGroup
+                            android:id="@+id/radioPayMode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="vertical"
+                            android:paddingBottom="2dp"
+                            android:paddingTop="2dp" >
+
+                            <RadioButton
+                                android:id="@+id/radioRenew"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="@color/blue_background"
+                                android:text="Schedule to next renewal"
+                                android:textColor="@color/blue_background"/>
+
+                            <RadioButton
+                                android:id="@+id/radioImmediate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Immediate Renewal"
+                                android:buttonTint="@color/blue_background"
+
+                                android:visibility="visible"
+                                android:textColor="@color/blue_background"/>
+
+                            <RadioButton
+                                android:id="@+id/radioAdj"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Immediate Renewal with Adjustment"
+                                android:visibility="gone"
+                                android:buttonTint="@color/blue_background"
+
+                                android:textColor="@color/blue_background"/>
+                        </RadioGroup>
+
+                        <TextView
+                            android:id="@+id/tvLabelDiscount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                            android:textColor="@color/color_red"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/llClickDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp" >
+
+                            <TextView
+                                android:id="@+id/tvClickDetails"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:singleLine="true"
+                                android:text="@string/click_here"
+                                android:textColor="@color/blue_background"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <include
+                            android:id="@+id/ll_Details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            layout="@layout/dialog_additional_amount" />
+
+                        <LinearLayout
+                            android:id="@+id/btnpay"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/btn_style"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal"
+                            android:padding="15dp"
+                            android:weightSum="5" >
+
+                            <ImageView
+                                android:id="@+id/img_pay_now"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:src="@drawable/rs" />
+
+                            <TextView
+                                android:id="@+id/tv_pay_now"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="2dp"
+                                android:text="Pay Now"
+                                android:textColor="@color/label_white_color"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textSize="@dimen/pay_now_lable" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </ScrollView>
+
+
+
+    </RelativeLayout>
+</FrameLayout>
