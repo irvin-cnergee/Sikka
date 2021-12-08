@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<network-security-config >
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>-->
+
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">150.129.48.28</domain>
+        <domain includeSubdomains="true"> 45.64.157.6</domain>
+        <domain includeSubdomains="true">myaccount.sikkanet.com</domain>
+        <domain includeSubdomains="true">sikkaappapi.sikkanet.com</domain>
+
+    </domain-config>
+</network-security-config>

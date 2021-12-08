@@ -1,0 +1,2 @@
+include ':app', ':residemenu', ':wheeldemo', ':floatinglabellib', ':floating_lib'
+rootProject.name='My Application'

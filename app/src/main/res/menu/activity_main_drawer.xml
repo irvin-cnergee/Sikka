@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_Profile"
+            android:icon="@drawable/profile"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_Renewal"
+            android:icon="@drawable/renew"
+            android:title="Renewal" />
+        <item
+            android:id="@+id/nav_Call"
+            android:icon="@drawable/call"
+            android:title="Call" />
+
+        <item
+            android:id="@+id/nav_Alert"
+            android:icon="@drawable/alerts"
+            android:title="Alerts" />
+
+        <item
+            android:id="@+id/nav_Help"
+            android:icon="@drawable/help"
+            android:title="Help" />
+
+        <item
+            android:id="@+id/nav_Share"
+            android:icon="@drawable/share"
+            android:title="Share" />
+
+        <item
+            android:id="@+id/nav_Logout"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
+        <item
+            android:id="@+id/nav_ReferFriend"
+            android:icon="@drawable/refer_a_friend"
+            android:title="Refer a friend" />
+
+
+    </group>
+</menu>
