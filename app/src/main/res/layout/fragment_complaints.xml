@@ -63,7 +63,8 @@
                         android:id="@+id/header_txt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="SERVICE REQUEST" />
+                        android:text="SERVICE REQUEST"
+                        android:textColor="@color/blue_background"/>
 
                     <View
                         android:layout_width="fill_parent"
@@ -97,9 +98,10 @@
 
                         <Spinner
                             android:id="@+id/spinnerList"
-                            style="@style/SpinnerAppTheme"
+                            style="@style/mySpinnerItemStyle"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            />
                     </LinearLayout>
 
                     <EditText
@@ -116,7 +118,8 @@
                         android:inputType="textMultiLine"
                         android:lines="3"
                         android:padding="2dp"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textColor="@color/blue_background"/>
 
                     <LinearLayout
                         android:id="@+id/relativeLayout2"
@@ -199,7 +202,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:text="Self"
-                                android:textSize="22sp" />
+                                android:textSize="22sp"
+                                android:textColor="@color/blue_background"/>
 
                             <TextView
                                 android:id="@+id/img_selfresolt3"
@@ -207,7 +211,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:text="Resolution"
-                                android:textSize="22sp" />
+                                android:textSize="22sp"
+                                android:textColor="@color/blue_background"/>
 
                             <!--
                                  <ImageView
@@ -305,7 +310,7 @@
                             android:layout_centerHorizontal="true"
                             android:paddingBottom="4dp"
                             android:text="Customer Care"
-                            android:textColor="@color/label_black_color"
+                            android:textColor="@color/blue_background"
                             android:textSize="11sp" />
 
                         <TextView
@@ -396,7 +401,7 @@
                             android:layout_centerHorizontal="true"
                             android:paddingBottom="4dp"
                             android:text="Release MAC"
-                            android:textColor="@color/label_black_color"
+                            android:textColor="@color/blue_background"
 
                             android:textSize="8sp" />
                     </RelativeLayout>
@@ -425,7 +430,7 @@
                             android:layout_below="@+id/img_logoff"
                             android:layout_centerHorizontal="true"
                             android:text="End Session"
-                            android:textColor="@color/label_black_color"
+                            android:textColor="@color/blue_background"
                             android:textSize="8sp" />
 
                         <!--
@@ -467,17 +472,11 @@
                             android:layout_below="@+id/img_reset_pass"
                             android:layout_centerHorizontal="true"
                             android:text="Reset Password"
-
-                            android:textColor="@color/label_black_color"
+                            android:textColor="@color/blue_background"
                             android:textSize="8sp" />
                     </RelativeLayout>
                 </LinearLayout>
             </RelativeLayout>
         </ScrollView>
-
-        <!-- <***********Footer starts from here ******> -->
-
-
     </RelativeLayout>
-
 </LinearLayout>

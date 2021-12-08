@@ -17,6 +17,7 @@
     <string name="trans_iprenewal">Ip Renewal</string>
     <string name="trans_home">Dashboard</string>
     <string name="trans_UpgradePlan">Upgrade Plan</string>
+    <string name="trans_Renew">Renew Plan</string>
 
     <string name="authKey">LEb9SzXNAIsgHLdt</string>
     <string name="authIV">Z4IPryT4DkxeQBF3</string>

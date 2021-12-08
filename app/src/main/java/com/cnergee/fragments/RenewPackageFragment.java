@@ -28,6 +28,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cnergee.mypage.IONHome;
 import com.cnergee.mypage.MakeMyPayment_Atom;
 import com.cnergee.mypage.MakePaymentSubpaisa;
 import com.cnergee.mypage.PackgedetailActivity;
@@ -145,6 +146,9 @@ public class RenewPackageFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_renew_package, container, false);
         context = getActivity();
+        ((IONHome)getActivity()).updateTitle(getString(R.string.trans_Renew));
+
+
         initViews(view);
         is_renew_running=true;
 
@@ -752,6 +756,7 @@ public class RenewPackageFragment extends Fragment {
 
 
                 // TODO Auto-generated method stub
+                pg_dialog.dismiss();
                 SharedPreferences sharedPreferences1 = context
                         .getSharedPreferences(getString(R.string.shared_preferences_renewal), 0);
 
@@ -787,6 +792,7 @@ public class RenewPackageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                pg_dialog.dismiss();
 
                 SharedPreferences sharedPreferences1 = context
                         .getSharedPreferences(getString(R.string.shared_preferences_renewal), 0);
@@ -843,19 +849,33 @@ public class RenewPackageFragment extends Fragment {
         }else
             Log.e("PackageValidity",":--"+PackageValidity);
 
-            i = new Intent(context, MakeMyPayment_Atom.class);
-        i.putExtra("PackageName", PackageName);
-        i.putExtra("PackageAmount", PackageRate);
-        i.putExtra("PackageValidity", PackageValidity);
-        i.putExtra("updateFrom", "S");
-        i.putExtra("ServiceTax", ServiceTax);
-        i.putExtra("datafrom", "Renew");
-        i.putExtra("discount", DiscountPercentage);
-        i.putExtra("addtional_amount", additionalAmount);
-
-        i.putExtra("ClassName", context.getClass().getSimpleName());
-        startActivity(i);
+//            i = new Intent(context, MakeMyPayment_Atom.class);
+//        i.putExtra("PackageName", PackageName);
+//        i.putExtra("PackageAmount", PackageRate);
+//        i.putExtra("PackageValidity", PackageValidity);
+//        i.putExtra("updateFrom", "S");
+//        i.putExtra("ServiceTax", ServiceTax);
+//        i.putExtra("datafrom", "Renew");
+//        i.putExtra("discount", DiscountPercentage);
+//        i.putExtra("addtional_amount", additionalAmount);
+//
+//        i.putExtra("ClassName", context.getClass().getSimpleName());
+//        startActivity(i);
         //RenewPackage.this.finish();
+
+        Fragment fragment = new MakeMyPayment_AtomFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("PackageName", PackageName);
+        bundle.putString("PackageAmount", PackageRate);
+        bundle.putInt("PackageValidity", Integer.parseInt(PackageValidity));
+        bundle.putString("updateFrom", "S");
+        bundle.putString("ServiceTax", ServiceTax);
+        bundle.putString("datafrom", "Renew");
+        bundle.putString("discount", DiscountPercentage);
+        bundle.putSerializable("addtional_amount", additionalAmount);
+        fragment.setArguments(bundle);
+        loadFragment(fragment);
+
 
 
     }

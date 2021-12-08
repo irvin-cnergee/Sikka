@@ -1062,7 +1062,7 @@ public class IONHome extends AppCompatActivity implements NavigationView.OnNavig
                 if (menu_id == R.id.nav_Profile) {
                     updateTitle("Profile");
                     fragment = new ProfileFragment();
-                    loadFragment1(fragment);
+                    loadFragment(fragment);
                 }
                 if (menu_id == R.id.nav_Renewal)
                 {
@@ -1099,7 +1099,7 @@ public class IONHome extends AppCompatActivity implements NavigationView.OnNavig
                 {
                     updateTitle("Help");
                     fragment = new HelpFragment();
-                    loadFragment1(fragment);
+                    loadFragment(fragment);
 
                 }
                 if (menu_id == R.id.nav_Share)

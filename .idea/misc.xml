@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/drawable/apptheme_activated_background_holo_light.xml" value="0.2361111111111111" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/drawable/apptheme_btn_radio_holo_light.xml" value="0.2324074074074074" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/drawable/apptheme_list_selector_holo_light.xml" value="0.2324074074074074" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/drawable/apptheme_spinner_background_holo_light.xml" value="0.2324074074074074" />
         <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/drawable/btn_style.xml" value="0.2361111111111111" />
         <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/drawable/edittext_style.xml" value="0.2361111111111111" />
         <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/drawable/tabstrip_theme_tab_indicator_holo.xml" value="0.2361111111111111" />
@@ -55,6 +58,7 @@
         <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/list_packagegroup.xml" value="0.2609375" />
         <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/login_fragment_activity.xml" value="0.2609375" />
         <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/makemypayments.xml" value="0.25" />
+        <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/mobile_no.xml" value="0.2" />
         <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/myapp_profile.xml" value="0.16" />
         <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/nav_header_main.xml" value="0.2609375" />
         <entry key="..\:/JYOTI WORKSPACE/CMAYA/ANDROID APPLICATION/Ashwini/Sikka_App/Sikka_App/app/src/main/res/layout/new_myapp_datausage.xml" value="0.2536231884057971" />
