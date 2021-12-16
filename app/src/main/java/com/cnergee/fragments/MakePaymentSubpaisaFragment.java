@@ -1,4 +1,4 @@
-package com.cnergee.mypage;
+package com.cnergee.fragments;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -13,21 +13,19 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.text.Html;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
-import android.text.style.URLSpan;
-import android.text.util.Linkify;
 import android.util.Log;
 import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -35,12 +33,16 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.content.DialogInterface.OnCancelListener;
 import android.widget.Toast;
 
-
-import com.android.volley.VolleyError;
+import com.cnergee.mypage.BaseApplication;
+import com.cnergee.mypage.ChangePackage;
+import com.cnergee.mypage.MakeMyPaymentsAtom;
+import com.cnergee.mypage.MakeMyPayments_CCAvenue;
+import com.cnergee.mypage.MakePaymentSubpaisa;
+import com.cnergee.mypage.RenewPackage;
 import com.cnergee.mypage.SOAP.GetAtomSignatureSoap;
+import com.cnergee.mypage.SubpaisaResponse;
 import com.cnergee.mypage.caller.AfterInsertPaymentsCaller;
 import com.cnergee.mypage.caller.BeforePaymentInsertCaller;
 import com.cnergee.mypage.caller.GetRedirectionDetailsCaller;
@@ -60,7 +62,6 @@ import com.sabpaisa.payment.EDW;
 import com.sabpaisa.payment.callback.SabPaisaPG;
 import com.sabpaisa.payment.pojo.PaymentResponse;
 
-
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -68,14 +69,26 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 import cnergee.sikka.broadband.R;
 
-public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link MakePaymentSubpaisaFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class MakePaymentSubpaisaFragment extends Fragment  implements SabPaisaPG {
 
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
 
-    LinearLayout linnhome, linnprofile, linnnotification, linnhelp, llClickDetails, ll_addtional_details;
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+    View view;
+    Context context,context1;
     TextView txtloginid, txtemailid, txtcontactno, txtnewpackagename, txtnewamount, txtnewvalidity, tvDiscountLabel,TextView14,TextView15;
 
     String SabPaisaTxId,firstName,lastName,payMode,email,mobileNo,transDate,orgTxnAmount,
@@ -111,13 +124,11 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
     MemberDetailsObj memberDetails;
 
     RedirectionDetailObj detailObj;
-    Bundle bundle;
     PaymentsObj paymentsObj = new PaymentsObj();
 
     private PaymentGateWayDetails getpaymentgatewaysdetails = null;
     private GetMemberDetailWebService getMemberDetailWebService = null;
     private GetRedirectionDetails getRedirectionDetails = null;
-    public static Context context;
     Utils utils = new Utils();
 
     private static int ACC_ID = 0000;
@@ -126,66 +137,79 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
     //private static final double PER_UNIT_PRICE = 12.34;
     ArrayList<HashMap<String, String>> custom_post_parameters;
     String atom_url ="",atom_acces_code ="",atom_error="",atom_track_id= "";
+    LinearLayout  llClickDetails, ll_addtional_details;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_make_payment_subpaisa);
-        initControls();
-
+    public MakePaymentSubpaisaFragment() {
+        // Required empty public constructor
     }
 
-    public void initControls() {
-        linnhome = (LinearLayout) findViewById(R.id.inn_banner_home);
-        linnprofile = (LinearLayout) findViewById(R.id.inn_banner_profile);
-        linnnotification = (LinearLayout) findViewById(R.id.inn_banner_notification);
-        linnhelp = (LinearLayout) findViewById(R.id.inn_banner_help);
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment MakePaymentSubpaisaFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static MakePaymentSubpaisaFragment newInstance(String param1, String param2) {
+        MakePaymentSubpaisaFragment fragment = new MakePaymentSubpaisaFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
-        llClickDetails = (LinearLayout) findViewById(R.id.llClickDetails);
-        ll_addtional_details = (LinearLayout) findViewById(R.id.ll_addtional_details);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
 
-        txtloginid = (TextView) findViewById(R.id.txtloginid);
-        txtemailid = (TextView) findViewById(R.id.txtemailid);
-        txtcontactno = (TextView) findViewById(R.id.txtcontactno);
-        txtnewpackagename = (TextView) findViewById(R.id.txtnewpackagename);
-        txtnewamount = (TextView) findViewById(R.id.txtnewamount);
-        txtnewvalidity = (TextView) findViewById(R.id.txtnewvalidity);
+            ServiceTax = getArguments().getString("ServiceTax");
+            UpdateFrom = getArguments().getString("updateFrom");
+            discount = getArguments().getString("discount");
+            ClassName = getArguments().getString("ClassName");
+            additionalAmount = (AdditionalAmount) getArguments().getSerializable("addtional_amount");
 
-        tvDiscountLabel = (TextView) findViewById(R.id.tvDiscountLabel);
-        TextView14 =  (TextView) findViewById(R.id.TextView14);
-        TextView15 =  (TextView) findViewById(R.id.TextView15);
 
-        privacy = (CheckBox) findViewById(R.id.privacy);
-        terms = (CheckBox) findViewById(R.id.terms);
+        }
+    }
 
-        btnnb = (Button) findViewById(R.id.btnnb);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
 
-        payNowView = (ScrollView) findViewById(R.id.payNowLayout);
-        responseScrollLayout = (ScrollView) findViewById(R.id.responseScrollLayout);
+        view = inflater.inflate(R.layout.fragment_make_payment_subpaisa, container, false);
+        initViews(view);
+        context = getActivity();
+        context1 = MakePaymentSubpaisaFragment.this.getActivity();
+        terms.setChecked(true);
+        privacy.setChecked(true);
 
-       terms.setChecked(true);
-       privacy.setChecked(true);
+        terms.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (compoundButton.isChecked()) {
+                    // checked
+                    terms.setChecked(true);
+                    Log.d("terms",""+b);
 
-       terms.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-           @Override
-           public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-               if (compoundButton.isChecked()) {
-                   // checked
-                   terms.setChecked(true);
-                   Log.d("terms",""+b);
-
-               }
-               else
-               {
-                   // not checked
-                   Log.d("terms",""+b);
-                   AlertsBoxFactory
-                           .showAlert(
-                                   "Please accept Terms and Conditions.",
-                                   MakePaymentSubpaisa.this);
-               }
-           }
-       });
+                }
+                else
+                {
+                    // not checked
+                    Log.d("terms",""+b);
+                    AlertsBoxFactory
+                            .showAlert(
+                                    "Please accept Terms and Conditions.",
+                                    context);
+                }
+            }
+        });
 
         privacy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -203,7 +227,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                     AlertsBoxFactory
                             .showAlert(
                                     "Please accept Privacy Policy.",
-                                    MakePaymentSubpaisa.this);
+                                    context);
                 }
             }
         });
@@ -213,7 +237,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                     if (Double.parseDouble(txtnewamount.getText().toString()) > 0) {
                         if ((terms.isChecked() == true )&&(privacy.isChecked() == true)) {
 
-                            if(Utils.isOnline(MakePaymentSubpaisa.this)){
+                            if(Utils.isOnline(context)){
                                 if(trackid_check){
                                     is_member_details=false;
                                     // TrackId Generated Successfully.
@@ -228,7 +252,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                                 else{
                                     // TrackId Failed to Generate.
                                     is_member_details=true;
-                                    if(Utils.isOnline(MakePaymentSubpaisa.this)){
+                                    if(Utils.isOnline(context)){
                                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                                             getpaymentgatewaysdetails = new PaymentGateWayDetails();
                                             getpaymentgatewaysdetails.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, (String) null);
@@ -242,7 +266,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                                 }
                             }
                             else{
-                                Toast.makeText(MakePaymentSubpaisa.this,
+                                Toast.makeText(context,
                                         getString(R.string.app_please_wait_label),
                                         Toast.LENGTH_LONG).show();
 
@@ -254,7 +278,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                             AlertsBoxFactory
                                     .showAlert(
                                             "Please accept Terms and Conditions, Privacy Policy.",
-                                            MakePaymentSubpaisa.this);
+                                            context);
 
 
                         }
@@ -264,7 +288,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                             AlertsBoxFactory
                                     .showAlert(
                                             "Due to some data mismatch we are unable to process your request\n Please contact admin",
-                                            MakePaymentSubpaisa.this);
+                                            context);
                     }
                 }
                 catch (Exception e) {
@@ -273,84 +297,19 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                         AlertsBoxFactory
                                 .showAlert(
                                         "Due to some data mismatch we are unable to process your request\n Please contact admin",
-                                        MakePaymentSubpaisa.this);
+                                        context);
                 }
 
             }
         });
 
+//        Intent intent = context.getIntent();
+//        bundle = intent.getExtras();
 
-        linnhome.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                MakePaymentSubpaisa.this.finish();
-                Intent i = new Intent(MakePaymentSubpaisa.this, IONHome.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.slide_in_left,
-                        R.anim.slide_out_right);
-                BaseApplication.getEventBus().post(
-                        new FinishEvent("RenewPackage"));
-                BaseApplication.getEventBus().post(
-                        new FinishEvent(Utils.Last_Class_Name));
-            }
-        });
+        txtnewpackagename.setText(getArguments().getString("PackageName"));
+        txtnewvalidity.setText(getArguments().getString("PackageValidity"));
 
-        linnprofile.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                MakePaymentSubpaisa.this.finish();
-                Intent i = new Intent(MakePaymentSubpaisa.this, Profile.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.slide_in_left,
-                        R.anim.slide_out_right);
-                BaseApplication.getEventBus().post(
-                        new FinishEvent("RenewPackage"));
-                BaseApplication.getEventBus().post(
-                        new FinishEvent(Utils.Last_Class_Name));
-            }
-        });
-
-        linnnotification.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                MakePaymentSubpaisa.this.finish();
-                Intent i = new Intent(MakePaymentSubpaisa.this,
-                        NotificationListActivity.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.slide_in_left,
-                        R.anim.slide_out_right);
-                BaseApplication.getEventBus().post(
-                        new FinishEvent("RenewPackage"));
-                BaseApplication.getEventBus().post(
-                        new FinishEvent(Utils.Last_Class_Name));
-            }
-        });
-
-
-        linnhelp.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                MakePaymentSubpaisa.this.finish();
-                Intent i = new Intent(MakePaymentSubpaisa.this, HelpActivity.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.slide_in_left,
-                        R.anim.slide_out_right);
-                BaseApplication.getEventBus().post(
-                        new FinishEvent("RenewPackage"));
-                BaseApplication.getEventBus().post(
-                        new FinishEvent(Utils.Last_Class_Name));
-            }
-        });
-
-
-        Intent intent = getIntent();
-        bundle = intent.getExtras();
-
-        txtnewpackagename.setText(bundle.getString("PackageName"));
-        txtnewvalidity.setText(bundle.getString("PackageValidity"));
-        ServiceTax = bundle.getString("ServiceTax");
-        UpdateFrom = bundle.getString("updateFrom");
-        discount = bundle.getString("discount");
-        ClassName = bundle.getString("ClassName");
-        additionalAmount = (AdditionalAmount) bundle.getSerializable("addtional_amount");
-
-        if (bundle.getString("datafrom").equalsIgnoreCase("changepack")) {
+        if (getArguments().getString("datafrom").equalsIgnoreCase("changepack")) {
             Changepack = true;
             tvDiscountLabel.setVisibility(View.GONE);
         } else {
@@ -433,16 +392,16 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
         });
 
         sharedPreferences_name = getString(R.string.shared_preferences_name);
-        SharedPreferences sharedPreferences = getApplicationContext()
-                .getSharedPreferences(sharedPreferences_name, 0); // 0 - for
         // private
+        SharedPreferences sharedPreferences = context
+                .getSharedPreferences(sharedPreferences_name, 0); // 0 - for
         // mode
         utils.setSharedPreferences(sharedPreferences);
         memberid = Long.parseLong(utils.getMemberId());
         isRenew = sharedPreferences.getString(Utils.IS_RENEWAL,"0");
 
 
-        if (Utils.isOnline(MakePaymentSubpaisa.this)) {
+        if (Utils.isOnline(context)) {
 
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -450,7 +409,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                 getRedirectionDetails.executeOnExecutor(
                         AsyncTask.THREAD_POOL_EXECUTOR, (String) null);
 
-                getMemberDetailWebService = new MakePaymentSubpaisa.GetMemberDetailWebService();
+                getMemberDetailWebService = new GetMemberDetailWebService();
                 getMemberDetailWebService.executeOnExecutor(
                         AsyncTask.THREAD_POOL_EXECUTOR, (String) null);
 
@@ -458,7 +417,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                 getRedirectionDetails = new GetRedirectionDetails();
                 getRedirectionDetails.execute((String) null);
 
-                getMemberDetailWebService = new MakePaymentSubpaisa.GetMemberDetailWebService();
+                getMemberDetailWebService = new GetMemberDetailWebService();
                 getMemberDetailWebService.execute((String) null);
             }
 
@@ -466,10 +425,39 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
             responseScrollLayout.setVisibility(View.GONE);
         } else {
             if (is_activity_running)
-                AlertsBoxFactory.showAlert("Please connect to internet !!", MakePaymentSubpaisa.this);
+                AlertsBoxFactory.showAlert("Please connect to internet !!", context);
         }
 
+
+        return view;
     }
+
+    private void initViews(View view) {
+
+        llClickDetails = (LinearLayout)view.findViewById(R.id.llClickDetails);
+        ll_addtional_details = (LinearLayout)view.findViewById(R.id.ll_addtional_details);
+        txtloginid = (TextView)view.findViewById(R.id.txtloginid);
+        txtemailid = (TextView)view.findViewById(R.id.txtemailid);
+        txtcontactno = (TextView)view.findViewById(R.id.txtcontactno);
+        txtnewpackagename = (TextView)view.findViewById(R.id.txtnewpackagename);
+        txtnewamount = (TextView)view.findViewById(R.id.txtnewamount);
+        txtnewvalidity = (TextView)view.findViewById(R.id.txtnewvalidity);
+
+        tvDiscountLabel = (TextView) view.findViewById(R.id.tvDiscountLabel);
+        TextView14 =  (TextView)view.findViewById(R.id.TextView14);
+        TextView15 =  (TextView)view.findViewById(R.id.TextView15);
+
+        privacy = (CheckBox)view.findViewById(R.id.privacy);
+        terms = (CheckBox)view.findViewById(R.id.terms);
+
+        btnnb = (Button)view.findViewById(R.id.btnnb);
+
+        payNowView = (ScrollView)view.findViewById(R.id.payNowLayout);
+        responseScrollLayout = (ScrollView)view.findViewById(R.id.responseScrollLayout);
+
+
+    }
+
     public void showPaymentDetails(AdditionalAmount additionalAmount) {
         if (additionalAmount != null) {
             // ll_addtional_details.setVisibility(View.VISIBLE);
@@ -477,23 +465,23 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
 
             TextView tv_package_rate, tv_add_amt, tv_add_reason, tv_discount_amt, tv_fine_amount, tv_days_fine_amt, tv_discount_per, tv_final_amt;
 
-            ll_package_rate = (LinearLayout) findViewById(R.id.ll_package_rate);
-            ll_add_amt = (LinearLayout) findViewById(R.id.ll_add_amt);
-            ll_add_reason = (LinearLayout) findViewById(R.id.ll_add_reason);
-            ll_discount_amt = (LinearLayout) findViewById(R.id.ll_discount_amt);
-            ll_fine_amount = (LinearLayout) findViewById(R.id.ll_fine_amt);
-            ll_days_fine_amt = (LinearLayout) findViewById(R.id.ll_days_fine_amt);
-            ll_discount_per = (LinearLayout) findViewById(R.id.ll_discount_per);
-            ll_final_amt = (LinearLayout) findViewById(R.id.ll_final_amount);
+            ll_package_rate = (LinearLayout)view.findViewById(R.id.ll_package_rate);
+            ll_add_amt = (LinearLayout)view.findViewById(R.id.ll_add_amt);
+            ll_add_reason = (LinearLayout)view.findViewById(R.id.ll_add_reason);
+            ll_discount_amt = (LinearLayout)view.findViewById(R.id.ll_discount_amt);
+            ll_fine_amount = (LinearLayout)view.findViewById(R.id.ll_fine_amt);
+            ll_days_fine_amt = (LinearLayout)view.findViewById(R.id.ll_days_fine_amt);
+            ll_discount_per = (LinearLayout)view.findViewById(R.id.ll_discount_per);
+            ll_final_amt = (LinearLayout)view.findViewById(R.id.ll_final_amount);
 
-            tv_package_rate = (TextView) findViewById(R.id.tv_package_rate);
-            tv_add_amt = (TextView) findViewById(R.id.tv_add_amt);
-            tv_add_reason = (TextView) findViewById(R.id.tv_add_reason);
-            tv_discount_amt = (TextView) findViewById(R.id.tv_discount_amt);
-            tv_fine_amount = (TextView) findViewById(R.id.tv_fine_amt);
-            tv_days_fine_amt = (TextView) findViewById(R.id.tv_days_fine_amt);
-            tv_discount_per = (TextView) findViewById(R.id.tv_discount_per);
-            tv_final_amt = (TextView) findViewById(R.id.tv_final_amount);
+            tv_package_rate = (TextView)view.findViewById(R.id.tv_package_rate);
+            tv_add_amt = (TextView)view.findViewById(R.id.tv_add_amt);
+            tv_add_reason = (TextView)view.findViewById(R.id.tv_add_reason);
+            tv_discount_amt = (TextView)view.findViewById(R.id.tv_discount_amt);
+            tv_fine_amount = (TextView)view.findViewById(R.id.tv_fine_amt);
+            tv_days_fine_amt = (TextView)view.findViewById(R.id.tv_days_fine_amt);
+            tv_discount_per = (TextView)view.findViewById(R.id.tv_discount_per);
+            tv_final_amt = (TextView)view.findViewById(R.id.tv_final_amount);
 
             if (Double.valueOf(additionalAmount.getPackageRate()) > 0) {
                 ll_package_rate.setVisibility(View.VISIBLE);
@@ -562,23 +550,11 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        MakePaymentSubpaisa.this.finish();
-        Intent i = new Intent(MakePaymentSubpaisa.this, IONHome.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(i);
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-
-        BaseApplication.getEventBus().post(new FinishEvent("RenewPackage"));
-        BaseApplication.getEventBus().post(new FinishEvent(Utils.Last_Class_Name));
-    }
 
 
     public void showPaymentDetailsDialog(AdditionalAmount additionalAmount) {
         if (additionalAmount != null) {
-            final Dialog dialog = new Dialog(MakePaymentSubpaisa.this);
+            final Dialog dialog = new Dialog(context);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             // tell the Dialog to use the dialog.xml as it's layout description
             dialog.setContentView(R.layout.dialog_additional_amount);
@@ -587,7 +563,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
             int height = 0;
 
             Point size = new Point();
-            WindowManager w = ((Activity) MakePaymentSubpaisa.this)
+            WindowManager w = ((Activity) context)
                     .getWindowManager();
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
@@ -598,7 +574,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                 Display d = w.getDefaultDisplay();
                 width = d.getWidth();
                 height = d.getHeight();
-                ;
+
             }
 
             LinearLayout ll_package_rate, ll_add_amt, ll_add_reason, ll_discount_amt, ll_fine_amount, ll_days_fine_amt, ll_discount_per, ll_final_amt;
@@ -719,7 +695,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
         protected void onPreExecute() {
             if(is_activity_running){
                 mProgressHUD = ProgressHUD
-                        .show(MakePaymentSubpaisa.this,
+                        .show(context,
                                 getString(R.string.app_please_wait_label), true,
                                 true, this);
             }
@@ -738,10 +714,10 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
             try {
 
                 InsertBeforeWithTrackCaller caller = new InsertBeforeWithTrackCaller(
-                        getApplicationContext().getResources().getString(
+                        context.getResources().getString(
                                 R.string.WSDL_TARGET_NAMESPACE),
-                        getApplicationContext().getResources().getString(
-                                R.string.SOAP_URL), getApplicationContext()
+                        context.getResources().getString(
+                                R.string.SOAP_URL), context
                         .getResources().getString(
                                 R.string.METHOD_BEFORE_MEMBER_PAY_WITH_TRACKID),true);
 
@@ -794,7 +770,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                 mProgressHUD.dismiss();
             insertBeforeWithTrackId = null;
             if (rslt.trim().equalsIgnoreCase("null") || rslt.equals(null)) {
-                AlertsBoxFactory.showAlert("Something went wrong. Please try Again !!!", MakePaymentSubpaisa.this);
+                AlertsBoxFactory.showAlert("Something went wrong. Please try Again !!!",context);
 
             } else {
                 if (rslt.trim().equalsIgnoreCase("ok")) {
@@ -803,7 +779,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
 
                     TrackId = adjTrackval;
                     if (TrackId.equals("null") || TrackId.equals(null)) {
-                        AlertsBoxFactory.showAlert("Something went wrong. Please try Again !!!", MakePaymentSubpaisa.this);
+                        AlertsBoxFactory.showAlert("Something went wrong. Please try Again !!!", context);
 
                     } else {
 
@@ -815,7 +791,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                             }
 
                         } else {
-                            AlertsBoxFactory.showAlert("TrackId not generated. Please try Again !!!", MakePaymentSubpaisa.this);
+                            AlertsBoxFactory.showAlert("TrackId not generated. Please try Again !!!", context);
                         }
 
                     }
@@ -838,7 +814,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
         @Override
         protected void onPreExecute() {
             mProgressHUD = ProgressHUD
-                    .show(MakePaymentSubpaisa.this,
+                    .show(context,
                             getString(R.string.app_please_wait_label), true,
                             true, this);
         }
@@ -849,7 +825,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                 mProgressHUD.dismiss();
             Utils.log("OnPostAtom","OnPostAtom");
             if(getatomResult!=null&&getatomResult.length()>0){
-               if(response!=null&&response.length()>0){
+                if(response!=null&&response.length()>0){
                     try {
                         JSONObject mainobjectJson = new JSONObject(response);
                         if(mainobjectJson.has("NewDataSet")){
@@ -878,12 +854,11 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
 
                             if (atom_error.equalsIgnoreCase("1")) {
                                 if (utils.EmailId == null) {
-                                    AlertsBoxFactory.showAlert("Please Update your EmailId from Update Profile.", MakePaymentSubpaisa.this);
+                                    AlertsBoxFactory.showAlert("Please Update your EmailId from Update Profile.", context);
                                 }
-                                AlertsBoxFactory.showAlert("We are facing some technical problem. Please Try Again !!!", MakePaymentSubpaisa.this);
+                                AlertsBoxFactory.showAlert("We are facing some technical problem. Please Try Again !!!", context);
 
                             }else{
-                                MakePaymentSubpaisa.this.finish();
 
                                 HashMap<String,String> hm_subpaisa =new HashMap<>();
 
@@ -897,19 +872,24 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                                 hm_subpaisa.put("authIV",authIV);
                                 hm_subpaisa.put("clientCode",clientCode);
                                 hm_subpaisa.put("txnId",TrackId);
-                               hm_subpaisa.put("URLsuccess","http://150.129.48.28:8005/PaymentGateWay/SabPaisa/PaymentStatusTransMobile.aspx");
-                               hm_subpaisa.put("URLfailure","http://150.129.48.28:8005/PaymentGateWay/SabPaisa/PaymentStatusTransMobile.aspx");
-                               hm_subpaisa.put("spHitUrl","https://securepay.sabpaisa.in/SabPaisa/sabPaisaInit");
-                               hm_subpaisa.put("username",username);
-                               hm_subpaisa.put("password",password);
+                                hm_subpaisa.put("URLsuccess","http://150.129.48.28:8005/PaymentGateWay/SabPaisa/PaymentStatusTransMobile.aspx");
+                                hm_subpaisa.put("URLfailure","http://150.129.48.28:8005/PaymentGateWay/SabPaisa/PaymentStatusTransMobile.aspx");
+                                hm_subpaisa.put("spHitUrl","https://securepay.sabpaisa.in/SabPaisa/sabPaisaInit");
+                                hm_subpaisa.put("username",username);
+                                hm_subpaisa.put("password",password);
 
-//                               EDW edw = new EDW(hm_subpaisa,MakePaymentSubpaisa.this);
-//                               edw.initiatePayment();
-                               //EDW edw = new EDW(MakePaymentSubpaisa.this,hm_subpaisa, MakePaymentSubpaisa.this);
-                                EDW.initiatePayment(MakePaymentSubpaisa.this,hm_subpaisa,MakePaymentSubpaisa.this);
+                                Log.e("Activity",":-"+context);
+                                Log.e("Activity1",":-"+MakePaymentSubpaisaFragment.this);
+                                Log.e("Activity2",":-"+MakePaymentSubpaisaFragment.this.getActivity());
+//                                EDW edw = new EDW(hm_subpaisa,MakePaymentSubpaisaFragment.this.getActivity());
+
+                                //EDW edw = new EDW(MakePaymentSubpaisa.this,hm_subpaisa, MakePaymentSubpaisa.this);
+                                EDW.initiatePayment(context,hm_subpaisa, MakePaymentSubpaisaFragment.this);
+
+//                                edw.initiatePayment();
                             }
                         }else{
-                            AlertsBoxFactory.showAlert("We are unable to initiate Payment.", MakePaymentSubpaisa.this);
+                            AlertsBoxFactory.showAlert("We are unable to initiate Payment.", context);
                         }
 
                     } catch (Exception e) {
@@ -917,10 +897,10 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                     }
 
                 }else{
-                    AlertsBoxFactory.showAlert("We are unable to initiate Payment.", MakePaymentSubpaisa.this);
+                    AlertsBoxFactory.showAlert("We are unable to initiate Payment.", context);
                 }
             }else {
-                AlertsBoxFactory.showAlert("We are unable to initiate Payment.", MakePaymentSubpaisa.this);
+                AlertsBoxFactory.showAlert("We are unable to initiate Payment.", context);
             }
         }
 
@@ -943,6 +923,48 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
             mProgressHUD.dismiss();
         }
     }
+
+
+//    @Override
+//    public void success(PaymentResponse paymentResponse) {
+//        System.out.println("---------->"+paymentResponse.getSabPaisaTxId() +"------>" +paymentResponse.getSpRespCode());
+//        Log.d("Response from subpaisa","-->"+paymentResponse);
+//        paymentsObj = new PaymentsObj();
+//        spRespCode = ( checkNullOrNot(paymentResponse.getSpRespCode()));
+//        SabPaisaTxId = checkNullOrNot(paymentResponse.getSabPaisaTxId());
+//        spRespStatus = checkNullOrNot(paymentResponse.getSpRespStatus());
+//        spPaymentid = checkNullOrNot(paymentResponse.getSabPaisaTxId());
+//        spAmount = checkNullOrNot(paymentResponse.getAmount());
+//        orgTxnAmount = checkNullOrNot(paymentResponse.getOrgTxnAmount());
+//        clientTxnId = checkNullOrNot(paymentResponse.getClientTxnId());
+//
+//        if(spRespCode.equals("0000")){
+//            reMsg = "Transaction Successful.";
+//        }if(spRespCode.equals("0300")){
+//            reMsg = "Transaction Failed.";
+//        }if(spRespCode.equals("0200")){
+//            reMsg = "Transaction Aborted.";
+//        }if(spRespCode.equals("0100")){
+//            reMsg = "Transaction Initiated.";
+//        }
+//
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+//            new InsertAfterPayemnt().executeOnExecutor(
+//                    AsyncTask.THREAD_POOL_EXECUTOR, (String) null);
+//            Utils.log("InsertPayment", "Insert Pay executed");
+//        } else {
+//            new InsertAfterPayemnt().execute();
+//            Utils.log("InsertPayment", "Insert Pay executed");
+//        }
+//
+//    }
+//
+//    @Override
+//    public void failure(String s) {
+//
+//    }
+
 
     @Override
     public void paymentResponse(PaymentResponse paymentResponse) {
@@ -995,14 +1017,14 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
 
 
     public class InsertAfterPayemnt extends AsyncTask<String, Void, Void>
-            implements OnCancelListener {
+            implements DialogInterface.OnCancelListener {
 
         ProgressHUD mProgressHUD;
 
         protected void onPreExecute() {
 
             mProgressHUD = ProgressHUD
-                    .show(MakePaymentSubpaisa.this,
+                    .show(context,
                             getString(R.string.app_please_wait_label), true,
                             true, this);
 
@@ -1059,15 +1081,14 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
                     {
                         new RenewalProcessWebService().executeOnExecutor(
-                            AsyncTask.THREAD_POOL_EXECUTOR, (String) null);
+                                AsyncTask.THREAD_POOL_EXECUTOR, (String) null);
                     } else {
                         new RenewalProcessWebService().execute();
                     }
 
                 } else {
 
-                    MakePaymentSubpaisa.this.finish();
-                    Intent intent = new Intent(MakePaymentSubpaisa.this, SubpaisaResponse.class);
+                    Intent intent = new Intent(context, SubpaisaResponse.class);
                     intent.putExtra("spRespStatus", spRespCode);
                     intent.putExtra("SabPaisaTxId", SabPaisaTxId);
                     intent.putExtra("clientTxnId",clientTxnId);
@@ -1076,7 +1097,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                     intent.putExtra("spAmount", spAmount);
                     intent.putExtra("orgTxnAmount", orgTxnAmount);
                     intent.putExtra("Trackid",TrackId);
-                   // intent.putExtra("statusMsg",paymentsObj.getTxMsg());
+                    // intent.putExtra("statusMsg",paymentsObj.getTxMsg());
                     startActivity(intent);
                     BaseApplication.getEventBus().post(new FinishEvent(MakeMyPaymentsAtom.class.getSimpleName()));
                     BaseApplication.getEventBus().post(new FinishEvent(RenewPackage.class.getSimpleName()));
@@ -1084,10 +1105,10 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
 
                 }
 
-          } else {
-              AlertsBoxFactory.showAlert(rslt, MakePaymentSubpaisa.this);
-             return;
-           }
+            } else {
+                AlertsBoxFactory.showAlert(rslt, context);
+                return;
+            }
         }
 
         @Override
@@ -1097,10 +1118,10 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                 // Log.i(" >>>>> ",getCurrDateTime());
 
                 AfterInsertPaymentsCaller caller = new AfterInsertPaymentsCaller(
-                        getApplicationContext().getResources().getString(
+                        context.getResources().getString(
                                 R.string.WSDL_TARGET_NAMESPACE),
-                        getApplicationContext().getResources().getString(
-                                R.string.SOAP_URL), getApplicationContext()
+                        context.getResources().getString(
+                                R.string.SOAP_URL), context
                         .getResources().getString(
                                 R.string.METHOD_AFTER_MEMBER_PAYMENTS),
                         true);
@@ -1129,7 +1150,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
 
             } catch (Exception e) {
 
-/* AlertsBoxFactory.showAlert(rslt,context ); */
+                /* AlertsBoxFactory.showAlert(rslt,context ); */
 
             }
             return null;
@@ -1143,7 +1164,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
     }
 
     private class RenewalProcessWebService extends
-            AsyncTask<String, Void, Void> implements OnCancelListener {
+            AsyncTask<String, Void, Void> implements DialogInterface.OnCancelListener {
 
         ProgressHUD mProgressHUD;
         PaymentsObj paymentsObj = new PaymentsObj();
@@ -1152,7 +1173,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
 
             Utils.log("OnRenewalExecuted", "OnRenewalExe");
             mProgressHUD = ProgressHUD
-                    .show(MakePaymentSubpaisa.this,
+                    .show(context,
                             getString(R.string.app_please_wait_label), true,
                             false, this);
         }
@@ -1169,8 +1190,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
 
             if (rslt.trim().equalsIgnoreCase("ok")) {
 
-                MakePaymentSubpaisa.this.finish();;
-                Intent intent = new Intent(MakePaymentSubpaisa.this, SubpaisaResponse.class);
+                Intent intent = new Intent(context, SubpaisaResponse.class);
                 intent.putExtra("spRespStatus", spRespCode);
                 intent.putExtra("SabPaisaTxId", SabPaisaTxId);
                 intent.putExtra("clientTxnId",clientTxnId);
@@ -1186,7 +1206,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                 BaseApplication.getEventBus().post(new FinishEvent(RenewPackage.class.getSimpleName()));
 
             } else {
-                AlertsBoxFactory.showAlert(rslt, MakePaymentSubpaisa.this);
+                AlertsBoxFactory.showAlert(rslt, context);
                 return;
             }
         }
@@ -1197,18 +1217,18 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
             try {
 
                 RenewalCaller caller = new RenewalCaller(
-                        getApplicationContext().getResources().getString(
+                        context.getResources().getString(
                                 R.string.WSDL_TARGET_NAMESPACE),
-                        getApplicationContext().getResources().getString(
+                        context.getResources().getString(
                                 R.string.SOAP_URL),
-                        getApplicationContext().getResources().getString(
+                        context.getResources().getString(
                                 R.string.METHOD_RENEWAL_REACTIVATE_METHOD));
 
                 paymentsObj.setMobileNumber(utils.getMobileNoPrimary());
                 paymentsObj.setSubscriberID(utils.getMemberLoginID());
                 paymentsObj.setPlanName(txtnewpackagename.getText().toString());
                 paymentsObj.setPaidAmount(Double.parseDouble(additionalAmount.getFinalcharges()));
-               // paymentsObj.setTrackId(clientTxnId);
+                // paymentsObj.setTrackId(clientTxnId);
                 paymentsObj.setTrackId(TrackId);
                 paymentsObj.setIsChangePlan(Changepack);
                 paymentsObj.setActionType(UpdateFrom);
@@ -1247,14 +1267,14 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
 
 
     private class GetMemberDetailWebService extends
-            AsyncTask<String, Void, Void> implements OnCancelListener {
+            AsyncTask<String, Void, Void> implements DialogInterface.OnCancelListener {
 
         ProgressHUD mProgressHUD;
 
         protected void onPreExecute() {
             if (is_activity_running)
                 mProgressHUD = ProgressHUD
-                        .show(MakePaymentSubpaisa.this,
+                        .show(context,
                                 getString(R.string.app_please_wait_label), true,
                                 true, this);
             Utils.log("1 Progress", "start");
@@ -1265,10 +1285,10 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
             {
                 try {
                     MemberDetailCaller memberdetailCaller = new MemberDetailCaller(
-                            getApplicationContext().getResources().getString(
+                            context.getResources().getString(
                                     R.string.WSDL_TARGET_NAMESPACE),
-                            getApplicationContext().getResources().getString(
-                                    R.string.SOAP_URL), getApplicationContext()
+                            context.getResources().getString(
+                                    R.string.SOAP_URL), context
                             .getResources().getString(
                                     R.string.METHOD_SUBSCRIBER_DETAILS));
 
@@ -1321,14 +1341,14 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                         customername = memberDetails.getMemberName();
                         Utils.log("customername", ":" + customername);
 
-						if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-							getpaymentgatewaysdetails = new PaymentGateWayDetails();
-							getpaymentgatewaysdetails.executeOnExecutor(
-									AsyncTask.THREAD_POOL_EXECUTOR, (String) null);
-						} else {
-							getpaymentgatewaysdetails = new PaymentGateWayDetails();
-							getpaymentgatewaysdetails.execute((String) null);
-						}
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                            getpaymentgatewaysdetails = new PaymentGateWayDetails();
+                            getpaymentgatewaysdetails.executeOnExecutor(
+                                    AsyncTask.THREAD_POOL_EXECUTOR, (String) null);
+                        } else {
+                            getpaymentgatewaysdetails = new PaymentGateWayDetails();
+                            getpaymentgatewaysdetails.execute((String) null);
+                        }
                     }
                 } else if (rslt.trim().equalsIgnoreCase("not")) {
                     if (is_activity_running)
@@ -1359,14 +1379,14 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
     }
 
     private class PaymentGateWayDetails extends AsyncTask<String, Void, Void>
-            implements OnCancelListener {
+            implements DialogInterface.OnCancelListener {
 
         ProgressHUD mProgressHUD;
 
         protected void onPreExecute() {
             if (is_activity_running)
                 mProgressHUD = ProgressHUD
-                        .show(MakePaymentSubpaisa.this,
+                        .show(context,
                                 getString(R.string.app_please_wait_label), true,
                                 true, this);
             Utils.log("2 Progress", "start");
@@ -1395,7 +1415,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                     TrackId = adjTrackval;
                     clientTxnId = adjTrackval;
 
-                   Utils.log("TrackId", ":" + TrackId);
+                    Utils.log("TrackId", ":" + TrackId);
                     if (TrackId.length() > 0) {
                         trackid_check = true;
 
@@ -1412,7 +1432,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
 
                     }
                 } catch (NumberFormatException nue) {
-                    RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioPayMode);
+                    RadioGroup radioGroup = (RadioGroup)view.findViewById(R.id.radioPayMode);
                     radioGroup.clearCheck();
                     // Log.i(">>>>>New PLan Rate<<<<<<", adjTrackval);
                 }
@@ -1428,10 +1448,10 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
 
             try {
                 PaymentGatewayCaller adjCaller = new PaymentGatewayCaller(
-                        getApplicationContext().getResources().getString(
+                        context.getResources().getString(
                                 R.string.WSDL_TARGET_NAMESPACE),
-                        getApplicationContext().getResources().getString(
-                                R.string.SOAP_URL), getApplicationContext()
+                        context.getResources().getString(
+                                R.string.SOAP_URL), context
                         .getResources().getString(
                                 R.string.METHOD_GET_TRANSACTIONID_WITH_BANK_NAME), "SB");
                 adjCaller.setMemberId(utils.getMemberId());
@@ -1468,7 +1488,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
     }
 
     private class InsertBeforePayemnt extends AsyncTask<String, Void, Void>
-            implements OnCancelListener {
+            implements DialogInterface.OnCancelListener {
 
         ProgressHUD mProgressHUD;
         PaymentsObj paymentsObj = new PaymentsObj();
@@ -1477,7 +1497,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
             Utils.log("3 Progress", "start");
             if (is_activity_running)
                 mProgressHUD = ProgressHUD
-                        .show(MakePaymentSubpaisa.this,
+                        .show(context,
                                 getString(R.string.app_please_wait_label), true,
                                 true, this);
 
@@ -1499,23 +1519,23 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
             // submit.setClickable(true);
             InsertBeforePayemnt = null;
             if (rslt.trim().equalsIgnoreCase("null") || rslt.equals(null)) {
-                AlertsBoxFactory.showAlert("Something went wrong. Please try Again !!!", MakePaymentSubpaisa.this);
+                AlertsBoxFactory.showAlert("Something went wrong. Please try Again !!!",context);
 
             } else
             if (rslt.trim().equalsIgnoreCase("ok")) {
-                 {
+                {
 
-                     if(paymentsObj.getMemberId() != 0) {
-                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-                             new Get_SubPaisa_Signature().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, (String) null);
-                         } else {
-                             new Get_SubPaisa_Signature().execute();
-                         }
-                     }else {
+                    if(paymentsObj.getMemberId() != 0) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                            new Get_SubPaisa_Signature().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, (String) null);
+                        } else {
+                            new Get_SubPaisa_Signature().execute();
+                        }
+                    }else {
 
-                         AlertsBoxFactory.showAlert("Error occured.",context );
+                        AlertsBoxFactory.showAlert("Error occured.",context );
 
-                     }
+                    }
                 }
 
             } else {
@@ -1533,9 +1553,9 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
                 // Log.i(" >>>>> ",getCurrDateTime());
 
                 BeforePaymentInsertCaller caller = new BeforePaymentInsertCaller(
-                        getApplicationContext().getResources().getString(
+                        context.getResources().getString(
                                 R.string.WSDL_TARGET_NAMESPACE),
-                        getApplicationContext().getResources().getString(R.string.SOAP_URL), getApplicationContext()
+                        context.getResources().getString(R.string.SOAP_URL), context
                         .getResources().getString(R.string.METHOD_BEFORE_MEMBER_PAYMENTS_NEW), true);
 
                 paymentsObj.setMemberId(Long.valueOf(utils.getMemberId()));
@@ -1581,7 +1601,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
     }
 
     private class GetRedirectionDetails extends AsyncTask<String, Void, Void>
-            implements OnCancelListener {
+            implements DialogInterface.OnCancelListener {
 
         ProgressHUD mProgressHUD;
 
@@ -1589,7 +1609,7 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
             Utils.log("3 Progress", "start");
             if (is_activity_running)
                 mProgressHUD = ProgressHUD
-                        .show(MakePaymentSubpaisa.this,
+                        .show(context,
                                 getString(R.string.app_please_wait_label), true,
                                 true, this);
 
@@ -1688,9 +1708,9 @@ public class MakePaymentSubpaisa extends BaseActivity implements SabPaisaPG {
 
 
                 GetRedirectionDetailsCaller caller = new GetRedirectionDetailsCaller(
-                        getApplicationContext().getResources().getString(
+                        context.getResources().getString(
                                 R.string.WSDL_TARGET_NAMESPACE),
-                        getApplicationContext().getResources().getString(R.string.SOAP_URL), getApplicationContext()
+                        context.getResources().getString(R.string.SOAP_URL), context
                         .getResources().getString(R.string.METHOD_GETREDIRECTIONDETAILS));
 
                 caller.join();

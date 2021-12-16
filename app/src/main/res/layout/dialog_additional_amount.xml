@@ -37,14 +37,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Package Rate:" />
+                    android:text="Package Rate:"
+                    android:textColor="@color/blue_background"/>
 
                 <TextView
                     android:id="@+id/tv_package_rate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="Additional Amount" />
+                    android:text="Additional Amount"
+                    android:textColor="@color/blue_background"/>
             </LinearLayout>
 
             <LinearLayout
@@ -61,14 +63,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Additional Amount:" />
+                    android:text="Additional Amount:"
+                    android:textColor="@color/blue_background"/>
 
                 <TextView
                     android:id="@+id/tv_add_amt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="Additional Amount" />
+                    android:text="Additional Amount"
+                    android:textColor="@color/blue_background"/>
             </LinearLayout>
 
             <LinearLayout
@@ -85,14 +89,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Additional Amount Reason:" />
+                    android:text="Additional Amount Reason:"
+                    android:textColor="@color/blue_background"/>
 
                 <TextView
                     android:id="@+id/tv_add_reason"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="Additional Amount" />
+                    android:text="Additional Amount"
+                    android:textColor="@color/blue_background"/>
             </LinearLayout>
 
             <LinearLayout
@@ -109,14 +115,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Discount Amount:" />
+                    android:text="Discount Amount:"
+                    android:textColor="@color/blue_background"/>
 
                 <TextView
                     android:id="@+id/tv_discount_amt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="Additional Amount" />
+                    android:text="Additional Amount"
+                    android:textColor="@color/blue_background"/>
             </LinearLayout>
 
             <LinearLayout
@@ -133,14 +141,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Days Fine Amount:" />
+                    android:text="Days Fine Amount:"
+                    android:textColor="@color/blue_background"/>
 
                 <TextView
                     android:id="@+id/tv_days_fine_amt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="Additional Amount" />
+                    android:text="Additional Amount"
+                    android:textColor="@color/blue_background"/>
             </LinearLayout>
 
             <LinearLayout
@@ -157,14 +167,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Fine Amount:" />
+                    android:text="Fine Amount:"
+                    android:textColor="@color/blue_background"/>
 
                 <TextView
                     android:id="@+id/tv_fine_amt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="Additional Amount" />
+                    android:text="Additional Amount"
+                    android:textColor="@color/blue_background"/>
             </LinearLayout>
 
             <LinearLayout
@@ -181,14 +193,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2.2"
-                    android:text="Discount Percentage(%):" />
+                    android:text="Discount Percentage(%):"
+                    android:textColor="@color/blue_background"/>
 
                 <TextView
                     android:id="@+id/tv_discount_per"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="Additional Amount" />
+                    android:text="Additional Amount"
+                    android:textColor="@color/blue_background"/>
             </LinearLayout>
 
             <LinearLayout
@@ -207,7 +221,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:padding="2dp"
-                    android:text="@string/rupees_sign" />
+                    android:text="@string/rupees_sign"
+                    android:textColor="@color/blue_background"/>
 
                 <TextView
                     android:id="@+id/tv_final_amount"
@@ -215,7 +230,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:padding="2dp"
-                    android:text="Additional Amount" />
+                    android:text="Additional Amount"
+                    android:textColor="@color/blue_background"/>
             </LinearLayout>
 
             <LinearLayout
@@ -234,7 +250,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/btn_selector"
+                    android:background="@drawable/btn_style"
                     android:paddingBottom="10dp"
                     android:paddingTop="10dp"
                     android:text="OK"

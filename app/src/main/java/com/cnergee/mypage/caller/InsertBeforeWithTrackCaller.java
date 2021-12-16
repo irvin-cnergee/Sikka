@@ -3,6 +3,7 @@ package com.cnergee.mypage.caller;
 
 import android.util.Log;
 
+import com.cnergee.fragments.MakePaymentSubpaisaFragment;
 import com.cnergee.mypage.MakeMyPayment_Atom;
 import com.cnergee.mypage.MakeMyPayments;
 import com.cnergee.mypage.MakeMyPaymentsTopUp;
@@ -69,8 +70,8 @@ public class InsertBeforeWithTrackCaller extends Thread {
 
             if(ismakemypayments){
                 if(Utils.is_subpaisa){
-                    MakePaymentSubpaisa.rslt = insertBeforeWithTrackSOAP.CallComplaintNoSOAP();
-                    MakePaymentSubpaisa.responseMsg = insertBeforeWithTrackSOAP.getServerMessage();
+                    MakePaymentSubpaisaFragment.rslt = insertBeforeWithTrackSOAP.CallComplaintNoSOAP();
+                    MakePaymentSubpaisaFragment.responseMsg = insertBeforeWithTrackSOAP.getServerMessage();
                 }else{
 //                    MakeMyPayment_AtomFragment.rslt = insertBeforeWithTrackSOAP.CallComplaintNoSOAP();
 //                    MakeMyPayment_AtomFragment.responseMsg = insertBeforeWithTrackSOAP.getServerMessage();
@@ -78,8 +79,8 @@ public class InsertBeforeWithTrackCaller extends Thread {
             }
             else{
                 if(Utils.is_subpaisa){
-                    MakePaymentSubpaisa.rslt = insertBeforeWithTrackSOAP.CallComplaintNoSOAP();
-                    MakePaymentSubpaisa.responseMsg = insertBeforeWithTrackSOAP.getServerMessage();
+                    MakePaymentSubpaisaFragment.rslt = insertBeforeWithTrackSOAP.CallComplaintNoSOAP();
+                    MakePaymentSubpaisaFragment.responseMsg = insertBeforeWithTrackSOAP.getServerMessage();
                 }else{
                     MakeMyPayment_Atom.rslt = insertBeforeWithTrackSOAP.CallComplaintNoSOAP();
                     MakeMyPayment_Atom.responseMsg = insertBeforeWithTrackSOAP.getServerMessage();

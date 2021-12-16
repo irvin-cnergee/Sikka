@@ -833,21 +833,37 @@ public class RenewPackageFragment extends Fragment {
     public void proceed_to_pay(AdditionalAmount additionalAmount){
         Intent i =null;
         if(Utils.is_subpaisa) {
-            i = new Intent(context, MakePaymentSubpaisa.class);
-            i.putExtra("PackageName", PackageName);
-            i.putExtra("PackageAmount", PackageRate);
-            i.putExtra("PackageValidity", PackageValidity);
-            i.putExtra("updateFrom", "S");
-            i.putExtra("ServiceTax", ServiceTax);
-            i.putExtra("datafrom", "Renew");
-            i.putExtra("discount", DiscountPercentage);
-            i.putExtra("addtional_amount", additionalAmount);
-
-            i.putExtra("ClassName", context.getClass().getSimpleName());
-            startActivity(i);
+//            i = new Intent(context, MakePaymentSubpaisa.class);
+//            i.putExtra("PackageName", PackageName);
+//            i.putExtra("PackageAmount", PackageRate);
+//            i.putExtra("PackageValidity", PackageValidity);
+//            i.putExtra("updateFrom", "S");
+//            i.putExtra("ServiceTax", ServiceTax);
+//            i.putExtra("datafrom", "Renew");
+//            i.putExtra("discount", DiscountPercentage);
+//            i.putExtra("addtional_amount", additionalAmount);
+//
+//            i.putExtra("ClassName", context.getClass().getSimpleName());
+//            startActivity(i);
             //RenewPackage.this.finish();
-        }else
-            Log.e("PackageValidity",":--"+PackageValidity);
+
+            Fragment fragment = new MakePaymentSubpaisaFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("PackageName", PackageName);
+            bundle.putString("PackageAmount", PackageRate);
+            bundle.putInt("PackageValidity", Integer.parseInt(PackageValidity));
+            bundle.putString("updateFrom", "S");
+            bundle.putString("ServiceTax", ServiceTax);
+            bundle.putString("datafrom", "Renew");
+            bundle.putString("discount", DiscountPercentage);
+            bundle.putString("ClassName", context.getClass().getSimpleName());
+            bundle.putSerializable("addtional_amount", additionalAmount);
+            fragment.setArguments(bundle);
+            loadFragment(fragment);
+
+
+        }else {
+            Log.e("PackageValidity", ":--" + PackageValidity);
 
 //            i = new Intent(context, MakeMyPayment_Atom.class);
 //        i.putExtra("PackageName", PackageName);
@@ -861,22 +877,22 @@ public class RenewPackageFragment extends Fragment {
 //
 //        i.putExtra("ClassName", context.getClass().getSimpleName());
 //        startActivity(i);
-        //RenewPackage.this.finish();
+            //RenewPackage.this.finish();
 
-        Fragment fragment = new MakeMyPayment_AtomFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("PackageName", PackageName);
-        bundle.putString("PackageAmount", PackageRate);
-        bundle.putInt("PackageValidity", Integer.parseInt(PackageValidity));
-        bundle.putString("updateFrom", "S");
-        bundle.putString("ServiceTax", ServiceTax);
-        bundle.putString("datafrom", "Renew");
-        bundle.putString("discount", DiscountPercentage);
-        bundle.putSerializable("addtional_amount", additionalAmount);
-        fragment.setArguments(bundle);
-        loadFragment(fragment);
+            Fragment fragment = new MakeMyPayment_AtomFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("PackageName", PackageName);
+            bundle.putString("PackageAmount", PackageRate);
+            bundle.putInt("PackageValidity", Integer.parseInt(PackageValidity));
+            bundle.putString("updateFrom", "S");
+            bundle.putString("ServiceTax", ServiceTax);
+            bundle.putString("datafrom", "Renew");
+            bundle.putString("discount", DiscountPercentage);
+            bundle.putSerializable("addtional_amount", additionalAmount);
+            fragment.setArguments(bundle);
+            loadFragment(fragment);
 
-
+        }
 
     }
 

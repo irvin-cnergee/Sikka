@@ -413,18 +413,14 @@ public class SubPaisaActivity extends AppCompatActivity implements OnCancelListe
 
     }
 
-
-
     @Override
     public void paymentResponse(PaymentResponse paymentResponse) {
-        Log.d("payment response","final res"+paymentResponse);
+
     }
 
     @Override
     public void onError(String s) {
-        {
-            Log.e("payment response",":"+s);
-        }
+
     }
 
 
@@ -1191,6 +1187,8 @@ public class SubPaisaActivity extends AppCompatActivity implements OnCancelListe
                                 //EDW edw = new EDW(hm_subpaisa, SubPaisaActivity.this);
                                 EDW.initiatePayment(SubPaisaActivity.this,hm_subpaisa, SubPaisaActivity.this);
 
+//                                EDW edw = new EDW(hm_subpaisa,SubPaisaActivity.this);
+//                                edw.initiatePayment();
                             }
                         }else{
                             AlertsBoxFactory.showAlert("We are unable to initiate Payment.", SubPaisaActivity.this);

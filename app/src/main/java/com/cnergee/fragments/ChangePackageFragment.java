@@ -1654,17 +1654,33 @@ public class ChangePackageFragment extends Fragment {
         if(compulsory_immediate){
             Intent i = null;
             if(Utils.is_subpaisa) {
-                i = new Intent(context, MakePaymentSubpaisa.class);
-                i.putExtra("PackageName", tv_pkg_name.getText().toString());
-                i.putExtra("PackageAmount", price.getText().toString());
-                i.putExtra("PackageValidity", packageList.getPackagevalidity());
-                i.putExtra("updateFrom", "I");
-                i.putExtra("ServiceTax", servicetax.getText().toString());
-                i.putExtra("datafrom", datafrom);
-                i.putExtra("ClassName",context.getClass().getSimpleName());
-                i.putExtra("addtional_amount", additionalAmount);
-                startActivity(i);
-                BaseApplication.getEventBus().post(new FinishEvent("RenewPackage"));
+//                i = new Intent(context, MakePaymentSubpaisa.class);
+//                i.putExtra("PackageName", tv_pkg_name.getText().toString());
+//                i.putExtra("PackageAmount", price.getText().toString());
+//                i.putExtra("PackageValidity", packageList.getPackagevalidity());
+//                i.putExtra("updateFrom", "I");
+//                i.putExtra("ServiceTax", servicetax.getText().toString());
+//                i.putExtra("datafrom", datafrom);
+//                i.putExtra("ClassName",context.getClass().getSimpleName());
+//                i.putExtra("addtional_amount", additionalAmount);
+//                startActivity(i);
+//                BaseApplication.getEventBus().post(new FinishEvent("RenewPackage"));
+
+
+                Fragment fragment = new MakePaymentSubpaisaFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("PackageName", tv_pkg_name.getText().toString());
+                bundle.putString("PackageAmount", price.getText().toString());
+                bundle.putInt("PackageValidity", packageList.getPackagevalidity());
+                bundle.putString("updateFrom", "I");
+                bundle.putString("ServiceTax", servicetax.getText().toString());
+                bundle.putString("datafrom", datafrom);
+                bundle.putString("ClassName", context.getClass().getSimpleName());
+                bundle.putSerializable("addtional_amount", additionalAmount);
+                fragment.setArguments(bundle);
+                loadFragment(fragment);
+
+
             }
             else {
 //                i = new Intent(context, MakeMyPayment_Atom.class);

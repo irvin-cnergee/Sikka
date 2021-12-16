@@ -5,7 +5,7 @@ android {
     compileSdkVersion 30
     defaultConfig {
         applicationId "cnergee.sikka.broadband"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 26
         versionName '3.1'//'2.1'

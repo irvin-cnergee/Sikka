@@ -1,6 +1,7 @@
 package com.cnergee.mypage.caller;
 
 import com.cnergee.fragments.MakeMyPayment_AtomFragment;
+import com.cnergee.fragments.MakePaymentSubpaisaFragment;
 import com.cnergee.mypage.MakePaymentSubpaisa;
 import com.cnergee.mypage.SOAP.GetRedirectionDetailsSOAP;
 import com.cnergee.mypage.utils.Utils;
@@ -31,8 +32,8 @@ public class GetRedirectionDetailsCaller extends Thread{
         try {
             getRedirectionDetailsSOAP = new GetRedirectionDetailsSOAP(WSDL_TARGET_NAMESPACE, SOAP_URL, METHOD_NAME);
             if(Utils.is_subpaisa){
-                MakePaymentSubpaisa.rslt = getRedirectionDetailsSOAP.CallComplaintNoSOAP();
-                MakePaymentSubpaisa.MapRedirectionDetails = getRedirectionDetailsSOAP.getMapRedictionDetail();
+                MakePaymentSubpaisaFragment.rslt = getRedirectionDetailsSOAP.CallComplaintNoSOAP();
+                MakePaymentSubpaisaFragment.MapRedirectionDetails = getRedirectionDetailsSOAP.getMapRedictionDetail();
             }else if(Utils.is_atom){
                 MakeMyPayment_AtomFragment.rslt = getRedirectionDetailsSOAP.CallComplaintNoSOAP();
                 MakeMyPayment_AtomFragment.MapRedirectionDetails = getRedirectionDetailsSOAP.getMapRedictionDetail();

@@ -1,5 +1,6 @@
 package com.cnergee.mypage.caller;
 
+import com.cnergee.fragments.MakePaymentSubpaisaFragment;
 import com.cnergee.mypage.MakeMyPayments;
 import com.cnergee.mypage.MakePaymentSubpaisa;
 import com.cnergee.mypage.SOAP.RenewalSOAP;
@@ -61,8 +62,8 @@ public class RenewalCaller extends Thread{
 			renewalsoap.setRenewalType(getRenewalType());
 
 			if(Utils.is_subpaisa){
-				MakePaymentSubpaisa.rslt = renewalsoap.CallComplaintNoSOAP();
-				MakePaymentSubpaisa.responseMsg = renewalsoap.getServerMessage();
+				MakePaymentSubpaisaFragment.rslt = renewalsoap.CallComplaintNoSOAP();
+				MakePaymentSubpaisaFragment.responseMsg = renewalsoap.getServerMessage();
 			}else if(Utils.is_atom){
                 WebView_AtomPayments.rslt = renewalsoap.CallComplaintNoSOAP();
                 WebView_AtomPayments.responseMsg = renewalsoap.getServerMessage();
@@ -72,9 +73,9 @@ public class RenewalCaller extends Thread{
 		}catch (SocketException e) {
 			e.printStackTrace();
 			if(Utils.is_subpaisa)
-                MakePaymentSubpaisa.rslt = "Internet connection not available!!";
+                MakePaymentSubpaisaFragment.rslt = "Internet connection not available!!";
 			else
-                MakePaymentSubpaisa.rslt = "Internet connection not available!!";
+                MakePaymentSubpaisaFragment.rslt = "Internet connection not available!!";
 		}catch (SocketTimeoutException e) {
 			e.printStackTrace();
 			if(Utils.is_atom)

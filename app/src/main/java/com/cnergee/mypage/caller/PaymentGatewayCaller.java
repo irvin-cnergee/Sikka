@@ -2,6 +2,7 @@
 package com.cnergee.mypage.caller;
 
 import com.cnergee.fragments.MakeMyPayment_AtomFragment;
+import com.cnergee.fragments.MakePaymentSubpaisaFragment;
 import com.cnergee.mypage.MakeMyPayments;
 import com.cnergee.mypage.MakeMyPaymentsTopUp;
 import com.cnergee.mypage.MakeMyPaymentsTopUp_CCAvenue;
@@ -44,8 +45,8 @@ public class PaymentGatewayCaller extends Thread {
                 MakeMyPayment_AtomFragment.adjTrackval = adjustmentSOAP.getServerMessage();
             }
             if(Utils.is_subpaisa){
-                MakePaymentSubpaisa.rslt = adjustmentSOAP.CallAdjustmentAmountSOAP(BankName);
-                MakePaymentSubpaisa.adjTrackval = adjustmentSOAP.getServerMessage();
+                MakePaymentSubpaisaFragment.rslt = adjustmentSOAP.CallAdjustmentAmountSOAP(BankName);
+                MakePaymentSubpaisaFragment.adjTrackval = adjustmentSOAP.getServerMessage();
             }
 			if(isTopup_falg()){
 				/*if(!Utils.is_CCAvenue){
@@ -72,8 +73,8 @@ public class PaymentGatewayCaller extends Thread {
 					MakeMyPayment_AtomFragment.adjTrackval = adjustmentSOAP.getServerMessage();
 				}
                 if(Utils.is_subpaisa){
-                    MakePaymentSubpaisa.rslt = adjustmentSOAP.CallAdjustmentAmountSOAP(BankName);
-                    MakePaymentSubpaisa.adjTrackval = adjustmentSOAP.getServerMessage();
+                    MakePaymentSubpaisaFragment.rslt = adjustmentSOAP.CallAdjustmentAmountSOAP(BankName);
+                    MakePaymentSubpaisaFragment.adjTrackval = adjustmentSOAP.getServerMessage();
                 }
 			}
 

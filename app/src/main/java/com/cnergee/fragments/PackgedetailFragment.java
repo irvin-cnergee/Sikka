@@ -750,7 +750,6 @@ public class PackgedetailFragment extends Fragment {
                     Log.e("hm_packge_list12", ":--" + hm_packge_list.get(package_List.getPackagevalidity()));
 
 
-
                 } else {
                     ArrayList<PackageList> al_package_list = new ArrayList<>();
                     al_package_list.add(package_List);

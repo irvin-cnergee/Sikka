@@ -855,7 +855,7 @@ public class HomeFragment extends Fragment {
         txtdayremaing.setText(sharedPreferences2
                 .getString("DaysRemaining", "-"));
 
-        String sharedPreferences_profile = getString(R.string.shared_preferences_profile);
+        String sharedPreferences_profile = context.getString(R.string.shared_preferences_profile);
 
         SharedPreferences sharedPreferences =context
                 .getSharedPreferences(sharedPreferences_profile, 0); // 0 - for

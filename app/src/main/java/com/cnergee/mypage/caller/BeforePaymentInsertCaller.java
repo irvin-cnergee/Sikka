@@ -1,6 +1,7 @@
 package com.cnergee.mypage.caller;
 
 import com.cnergee.fragments.MakeMyPayment_AtomFragment;
+import com.cnergee.fragments.MakePaymentSubpaisaFragment;
 import com.cnergee.mypage.MakeMyPayment_Atom;
 import com.cnergee.mypage.MakeMyPaymentsAtom;
 import com.cnergee.mypage.MakePaymentSubpaisa;
@@ -61,12 +62,12 @@ public class BeforePaymentInsertCaller extends Thread{
 			if(ismakemypayments){
 
 				if(Utils.is_atom){
-//                    MakeMyPayment_AtomFragment.rslt = beforepaymentsoap.CallComplaintNoSOAP();
-//					MakeMyPayment_AtomFragment.responseMsg = beforepaymentsoap.getServerMessage();
+                    MakeMyPayment_AtomFragment.rslt = beforepaymentsoap.CallComplaintNoSOAP();
+					MakeMyPayment_AtomFragment.responseMsg = beforepaymentsoap.getServerMessage();
 				}
                 if(Utils.is_subpaisa){
-                    MakePaymentSubpaisa.rslt = beforepaymentsoap.CallComplaintNoSOAP();
-                    MakePaymentSubpaisa.responseMsg = beforepaymentsoap.getServerMessage();
+                    MakePaymentSubpaisaFragment.rslt = beforepaymentsoap.CallComplaintNoSOAP();
+                    MakePaymentSubpaisaFragment.responseMsg = beforepaymentsoap.getServerMessage();
                 }
 			}
 			else{
@@ -83,12 +84,12 @@ public class BeforePaymentInsertCaller extends Thread{
 						.getServerMessage();
 				}*/
 				if(Utils.is_atom){
-					MakeMyPayment_Atom.rslt = beforepaymentsoap.CallComplaintNoSOAP();
-					MakeMyPayment_Atom.responseMsg = beforepaymentsoap.getServerMessage();
+					MakeMyPayment_AtomFragment.rslt = beforepaymentsoap.CallComplaintNoSOAP();
+					MakeMyPayment_AtomFragment.responseMsg = beforepaymentsoap.getServerMessage();
 				}
                 if(Utils.is_subpaisa){
-                    MakePaymentSubpaisa.rslt = beforepaymentsoap.CallComplaintNoSOAP();
-                    MakePaymentSubpaisa.responseMsg = beforepaymentsoap.getServerMessage();
+                    MakePaymentSubpaisaFragment.rslt = beforepaymentsoap.CallComplaintNoSOAP();
+                    MakePaymentSubpaisaFragment.responseMsg = beforepaymentsoap.getServerMessage();
                 }
 			}
 			
